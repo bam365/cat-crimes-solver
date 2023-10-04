@@ -55,6 +55,28 @@ type Logic =
 
 type Configuration = Map<Place, Cat>
 
+let catToString = function
+    | Sassy -> "Sassy"
+    | MrMittens -> "Mr. Mittens"
+    | PipSqueak -> "Pip Squeak"
+    | Ginger -> "Ginger"
+    | Duchess -> "Duchess"
+    | TomCat -> "Tom Cat"
+    | NoCat -> "(empty)"
+
+let placeToString = function
+    | Birdcage -> "Birdcage"
+    | Coffee -> "Coffee"
+    | Shoes -> "Shoes"
+    | Fishbowl -> "Fishbowl"
+    | Yarn -> "Yarn"
+    | Plant -> "Plant"
+
+let configurationToString (configuration: Configuration) = 
+    configuration
+    |> Map.map (fun place cat -> sprintf "%s: %s" (placeToString place) (catToString cat))
+    |> Map.values
+    |> String.concat "\n"
 
 let catsWith catProp = 
     match catProp with
